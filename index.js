@@ -36,6 +36,14 @@ async function run() {
             res.json(package);
         })
 
+        //PACKAGE POST API
+        app.post('/packages', async(req, res) => {
+            const package = req.body;
+            console.log(req.body);
+            const result = await packagesCollection.insertOne(package);
+            res.json(result)
+        })
+
         // ORDER POST API
         app.post("/order", async(req, res)=> {
             const data = req.body;
